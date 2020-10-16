@@ -15,6 +15,7 @@ const App = () => {
     cheese: false,
     meat: false,
     veggie: false,
+    special: "",
   };
 
   const initialFormErrors = {
@@ -55,9 +56,16 @@ const App = () => {
       toppings: ["sauce", "cheese", "meat", "veggie"].filter((topping) => {
         return formValues[topping];
       }),
+      special: formValues.special.trim(),
     };
     postNewOrder(newOrder);
   };
+
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
   return (
     <>

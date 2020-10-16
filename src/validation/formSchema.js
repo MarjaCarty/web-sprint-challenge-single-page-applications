@@ -10,4 +10,5 @@ export default yup.object().shape({
   cheese: yup.boolean(),
   meat: yup.boolean(),
   veggie: yup.boolean(),
+  special: yup.string(),
 });

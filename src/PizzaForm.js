@@ -31,11 +31,12 @@ export default function PizzaForm(props) {
             name="name"
             placeholder="Enter your name"
             onChange={onChange}
+            value={values.name}
           />
         </label>
         <label>
           Choose a size:
-          <select name="size" onChange={onChange}>
+          <select name="size" value={values.size} onChange={onChange}>
             <option value="">---Select size---</option>
             <option value="Small">10"</option>
             <option value="Medium">12"</option>
@@ -45,19 +46,48 @@ export default function PizzaForm(props) {
         <h4>Toppings</h4>
         <label>
           Tomato Basil Sauce
-          <input type="checkbox" name="sauce" onChange={onChange} />
+          <input
+            type="checkbox"
+            name="sauce"
+            onChange={onChange}
+            checked={values.sauce === true}
+          />
         </label>
         <label>
           Mozzarella Cheese
-          <input type="checkbox" name="cheese" onChange={onChange} />
+          <input
+            type="checkbox"
+            name="cheese"
+            onChange={onChange}
+            checked={values.cheese === true}
+          />
         </label>
         <label>
           Pork Sausage
-          <input type="checkbox" name="meat" onChange={onChange} />
+          <input
+            type="checkbox"
+            name="meat"
+            onChange={onChange}
+            checked={values.meat === true}
+          />
         </label>
         <label>
           Spinach
-          <input type="checkbox" name="veggie" onChange={onChange} />
+          <input
+            type="checkbox"
+            name="veggie"
+            onChange={onChange}
+            checked={values.veggie === true}
+          />
+        </label>
+        <label>
+          Special Instructions
+          <textarea
+            name="special"
+            rows="4"
+            cols="50"
+            onChange={onChange}
+          ></textarea>
         </label>
         <button type="submit" disabled={disabled}>
           Add To Order
