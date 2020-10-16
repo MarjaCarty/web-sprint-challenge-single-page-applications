@@ -3,7 +3,7 @@ describe("Pizza App", () => {
     cy.visit("http://localhost:3000");
   });
 
-  const nameInput = () => cy.get("input[name=sauce]");
+  const nameInput = () => cy.get("input[name=name]");
   const sauceCheckbox = () => cy.get("input[name=sauce]");
   const cheeseCheckbox = () => cy.get("input[name=cheese]");
   const meatCheckbox = () => cy.get("input[name=meat]");
@@ -19,5 +19,31 @@ describe("Pizza App", () => {
     meatCheckbox().should("exist");
     veggieCheckbox().should("exist");
     submitBtn().should("exist");
+  });
+
+  it("can type in name", () => {
+    formNav().click();
+    nameInput().should("have.value", "");
+    nameInput().type("Name");
+    nameInput().should("have.value", "Name");
+  });
+
+  it("can click checkboxes", () => {
+    formNav().click();
+    sauceCheckbox().should("not.be.checked");
+    sauceCheckbox().check();
+    sauceCheckbox().should("be.checked");
+
+    cheeseCheckbox().should("not.be.checked");
+    cheeseCheckbox().check();
+    cheeseCheckbox().should("be.checked");
+
+    meatCheckbox().should("not.be.checked");
+    meatCheckbox().check();
+    meatCheckbox().should("be.checked");
+
+    veggieCheckbox().should("not.be.checked");
+    veggieCheckbox().check();
+    veggieCheckbox().should("be.checked");
   });
 });
