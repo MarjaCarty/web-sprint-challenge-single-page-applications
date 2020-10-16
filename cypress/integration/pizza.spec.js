@@ -10,6 +10,7 @@ describe("Pizza App", () => {
   const veggieCheckbox = () => cy.get("input[name=veggie]");
   const submitBtn = () => cy.get("#submit");
   const formNav = () => cy.get("#pizzaLink");
+  const dropdown = () => cy.get("select[name=size]");
 
   it("the proper elements exist", () => {
     formNav().click();
@@ -19,6 +20,7 @@ describe("Pizza App", () => {
     meatCheckbox().should("exist");
     veggieCheckbox().should("exist");
     submitBtn().should("exist");
+    dropdown().should("exist");
   });
 
   it("can type in name", () => {
@@ -45,5 +47,12 @@ describe("Pizza App", () => {
     veggieCheckbox().should("not.be.checked");
     veggieCheckbox().check();
     veggieCheckbox().should("be.checked");
+  });
+
+  it("can submit form", () => {
+    formNav().click();
+    nameInput().type("Name");
+    dropdown().select("Small");
+    submitBtn().click();
   });
 });
