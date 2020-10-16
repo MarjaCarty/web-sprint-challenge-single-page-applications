@@ -11,7 +11,9 @@ export default function Home() {
         </nav>
       </div>
       <div className="hero">
-        <Link to="/pizza">Pizza?</Link>
+        <Link to="/pizza" id="pizzaLink">
+          Pizza?
+        </Link>
       </div>
     </div>
   );

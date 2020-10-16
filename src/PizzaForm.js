@@ -90,7 +90,7 @@ export default function PizzaForm(props) {
             value={values.special}
           ></textarea>
         </label>
-        <button type="submit" disabled={disabled}>
+        <button id="submit" type="submit" disabled={disabled}>
           Add To Order
         </button>
         {order[0] ? <Order order={order} /> : null}
