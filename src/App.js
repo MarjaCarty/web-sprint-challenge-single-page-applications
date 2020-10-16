@@ -4,6 +4,7 @@ import Home from "./Home";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
+import schema from "./validation/formSchema";
 
 const App = () => {
   ///initial values///
@@ -35,6 +36,15 @@ const App = () => {
   };
 
   const onChange = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
     setFormValues({ ...formValues, [name]: value });
   };
 
