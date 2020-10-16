@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Order from "./Order";
 
 export default function PizzaForm(props) {
-  const { values, submit, change, disabled, errors } = props;
+  const { values, submit, change, disabled, errors, order } = props;
 
   const onChange = (evt) => {
     const { name, value, type, checked } = evt.target;
@@ -23,7 +24,6 @@ export default function PizzaForm(props) {
           <div>{errors.name}</div>
           <div>{errors.size}</div>
         </div>
-
         <label>
           Name
           <input
@@ -87,11 +87,13 @@ export default function PizzaForm(props) {
             rows="4"
             cols="50"
             onChange={onChange}
+            value={values.special}
           ></textarea>
         </label>
         <button type="submit" disabled={disabled}>
           Add To Order
         </button>
+        {order[0] ? <Order order={order} /> : null}
       </form>
     </div>
   );

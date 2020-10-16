@@ -33,7 +33,15 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   const postNewOrder = (newOrder) => {
-    //axios call in here
+    axios
+      .post("https://reqres.in/api/users", newOrder)
+      .then((res) => {
+        setOrder([res.data]);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const onChange = (name, value) => {
@@ -77,6 +85,7 @@ const App = () => {
             change={onChange}
             disabled={disabled}
             errors={formErrors}
+            order={order}
           />
         </Route>
 
